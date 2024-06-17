@@ -1,0 +1,13 @@
+mixin pagination(pagination)
+    nav(aria-label="Page navigation example")
+        ul(class="pagination")
+            if(pagination.pageNumber > 1)
+                li(class="page-item")
+                    button(type="button" class="page-link btn-outline-primary" button-pagination=(pagination.pageNumber - 1)) Trang trước
+            //- each _, i + 1 in Array(pagination.totalPage)
+            -for(var i = 1; i <= pagination.totalPage; i++)
+                li(class="page-item")
+                    button(type="button" class=`page-link btn-outline-primary ${pagination.pageNumber == i ? ("active") : ("")}` button-pagination=i) #{i}
+            if(pagination.pageNumber < pagination.totalPage)  
+                li(class="page-item")
+                    button(type="button" class="page-link btn-outline-primary" button-pagination=(pagination.pageNumber + 1)) Trang sau
